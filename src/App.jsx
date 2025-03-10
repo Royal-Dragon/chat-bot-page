@@ -20,7 +20,7 @@ const NavLink = ({ href, text }) => (
 );
 const handleInstall = () => {
   // Replace with the actual app file path
-  const appPath = "../app-release.apk"; // or "/app.exe" for Windows
+  const appPath = "/app-release.apk"; // or "/app.exe" for Windows
 
   // Trigger the download
   const link = document.createElement("a");
