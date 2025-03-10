@@ -18,7 +18,18 @@ const NavLink = ({ href, text }) => (
     </a>
   </motion.li>
 );
+const handleInstall = () => {
+  // Replace with the actual app file path
+  const appPath = "../app-release.apk"; // or "/app.exe" for Windows
 
+  // Trigger the download
+  const link = document.createElement("a");
+  link.href = appPath;
+  link.download = appPath.split("/").pop(); // Extract filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 export default function App() {
   const [ripple, setRipple] = useState(false); // State for ripple effect
 
@@ -69,7 +80,7 @@ export default function App() {
             repeat: Infinity, // Loop the animation infinitely
             ease: "easeInOut", // Smooth easing
           }}
-          onClick={handleRipple} // Trigger ripple effect on click
+          onClick={handleInstall} // Trigger ripple effect on click
         >
            <span>DOWNLOAD</span> <img className=' pl-2 w-10' src={svf} alt="" />
           {/* Ripple Effect */}
