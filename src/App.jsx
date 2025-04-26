@@ -30,6 +30,21 @@ const handleInstall = () => {
   link.click();
   document.body.removeChild(link);
 };
+
+const handle2Install = () => {
+  // Replace with the actual app file path
+  const appPath = "/version 2.apk"; // or "/app.exe" for Windows
+
+  // Trigger the download
+  const link = document.createElement("a");
+  link.href = appPath;
+  link.download = appPath.split("/").pop(); // Extract filename
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
+
 export default function App() {
   const [ripple, setRipple] = useState(false); // State for ripple effect
 
@@ -82,7 +97,39 @@ export default function App() {
           }}
           onClick={handleInstall} // Trigger ripple effect on click
         >
-           <span>DOWNLOAD</span> <img className=' pl-2 w-10' src={svf} alt="" />
+           <span>Version 1.0</span> <img className=' pl-2 w-10' src={svf} alt="" />
+           
+          {/* Ripple Effect */}
+          {ripple && (
+            <motion.span
+              className="absolute bg-white rounded-full opacity-0"
+              initial={{ scale: 0, opacity: 0.3 }}
+              animate={{ scale: 3, opacity: 0 }}
+              transition={{ duration: 0.6 }}
+              style={{
+                top: '50%',
+                left: '50%',
+                width: '100px',
+                height: '100px',
+                transform: 'translate(-50%, -50%)',
+              }}
+            />
+          )}
+        </motion.button>
+        <motion.button
+          className=" flex ml-24 mt-2 px-12 py-3 bg-gray-800 text-white text-3xl font-semibold rounded-lg shadow-lg transition-colors relative overflow-hidden"
+          animate={{
+            y: [0, -20, 0], // Move the button up and down
+          }}
+          transition={{
+            duration: 2, // Animation duration
+            repeat: Infinity, // Loop the animation infinitely
+            ease: "easeInOut", // Smooth easing
+          }}
+          onClick={handle2Install} // Trigger ripple effect on click
+        >
+           <span>Version 2.0</span> <img className=' pl-2 w-10' src={svf} alt="" />
+           
           {/* Ripple Effect */}
           {ripple && (
             <motion.span
